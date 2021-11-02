@@ -4,8 +4,13 @@ Hide secret message into an image.
 
 ## Codec
 
+Execute with python
 ```bash
-Python3 codec.py <image> <message> <output>
+python codec.py <image> <message> <output>
+```
+or with python3
+```
+python3 codec.py <image> <message> <output>
 ```
 
 ## Decoder
