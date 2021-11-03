@@ -2,7 +2,7 @@
 
 Hide secret message into an image.
 
-*message length < pixels*
+**Message Length < Image.size**
 
 ## Codec
 
