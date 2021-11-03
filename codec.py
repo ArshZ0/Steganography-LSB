@@ -34,6 +34,9 @@ def main():
 
     print("Loading of "+args[0]+" ...\n");sleep(0.5)
 
+    image = image.convert('RGBA')
+    pixels = image.load()
+
     try:
         message_file = open(args[1], "r")
     except:
@@ -41,6 +44,8 @@ def main():
         exit()
 
     print("Reading of "+args[1]+" ...\n");sleep(0.5)
+
+    message = message_file.readline()
 
     try:
         output = open(args[2], "x+")
@@ -50,13 +55,9 @@ def main():
 
     print("Creating of "+args[2]+" ...\n");sleep(0.5)
 
-    image = image.convert('RGBA')
-    pixels = image.load()
-
     out = Image.new('RGBA', image.size)
     out_pixels = out.load()
 
-    message = message_file.readline()
     curr_char = 0
     length_mess = len(message)-1
     for y in range(image.size[1]):
@@ -82,7 +83,6 @@ def main():
     image.close()
     message_file.close()
     output.close()
-
 
 if __name__ == '__main__' :
     main()
