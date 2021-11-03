@@ -47,6 +47,10 @@ def main():
 
     message = message_file.readline()
 
+    if (len(message)>image.size[0]*image.size[1]):
+        print("Error: Message too long for the size of the image")
+        exit()
+
     try:
         output = open(args[2], "x+")
     except:

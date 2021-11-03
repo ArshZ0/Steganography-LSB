@@ -2,6 +2,8 @@
 
 Hide secret message into an image.
 
+*message length < pixels*
+
 ## Codec
 
 Execute with python
@@ -26,7 +28,7 @@ python3 decoder.py <image> <output>
 
 ## How it works ?
 
-Get color of each pixel of the image in RGBA
+Get color of each pixel from the image in RGBA
 ```bash
 (255, 0, 0, 255) -> red
 (0, 255, 0, 255) -> green
