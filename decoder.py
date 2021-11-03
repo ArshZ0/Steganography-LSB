@@ -31,7 +31,13 @@ def main():
 
     print("Loading of "+args[0]+" ...\n");sleep(0.5)
 
-    
+    try:
+        output = open(args[1], "x+")
+    except:
+        print("Error: \'"+args[1]+"\' already exist")
+        exit()
+
+    print("Writing into "+args[1]+" ...\n");sleep(0.5)
 
 if __name__ == '__main__' :
     main()
