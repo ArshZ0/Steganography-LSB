@@ -9,7 +9,7 @@ Execute with python
 python codec.py <image> <message> <output>
 ```
 or with python3
-```
+```bash
 python3 codec.py <image> <message> <output>
 ```
 
