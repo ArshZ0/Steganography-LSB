@@ -65,7 +65,5 @@ def main():
     output.close()
     image.close()
 
-
-
 if __name__ == '__main__' :
     main()
