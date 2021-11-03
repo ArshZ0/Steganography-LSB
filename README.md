@@ -32,11 +32,11 @@ Get color of each pixel of the image in RGBA
 (0, 255, 0, 255) -> green
 (0, 0, 255, 255) -> blue
 ```
-just set the last 2 bits of each color at 0 : 
+Set the last 2 bits of each color at 0 : 
 ```bash
 255 -> 252
 ```
-Next transform each chars of message into ascii binary, split them in 4 blocs of 2 bits and put it into colors
+Then, transform each character of the message into binary, split them into 4 blocs of 2 bits and put them in the colors
 ```bash
 (252, 0, 0, 252) -> Initial color & 252
 a = 97 = 01 10 00 01
