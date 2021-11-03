@@ -38,7 +38,7 @@ def main():
         exit()
 
     try:
-        output = open(args[2], "w+")
+        output = open(args[2], "x+")
     except:
         print("Error: \'"+args[2]+"\' already exist")
         exit()
@@ -47,18 +47,30 @@ def main():
     image = image.convert('RGBA')
     pixels = image.load()
 
+    message = message_file.readline()
+    curr_char = 0
+    length_mess = len(message)-1
     for y in range(image.size[1]):
         for x in range(image.size[0]):
             r,g,b,a = pixels[x, y]
+            r = r & 252
+            g = g & 252
+            b = b & 252
+            a = a & 252
+
+            if (curr_char < length_mess):
+                binary = bin(ord(message[curr_char]))[2:]
+                while (len(binary)<8):
+                    binary = '0'+binary
+                split = split_binary(binary)
+                r+=int(split[0],2)
+                g+=int(split[1],2)
+                b+=int(split[2],2)
+                a+=int(split[3],2)
+                #print(message[curr_char],ord(message[curr_char]),binary, split)
+                curr_char+=1
             print("RED: ",r,"\tGREEN: ",g,"\tBLUE: ",b, "\tALPHA: ",a)
 
-    message = message_file.readline()
-    for i in range(len(message)-1):
-        binary = bin(ord(message[i]))[2:]
-        while (len(binary)<8):
-            binary = '0'+binary
-        split = split_binary(binary)
-        print(message[i],ord(message[i]),binary, split)
 
 if __name__ == '__main__' :
     main()
