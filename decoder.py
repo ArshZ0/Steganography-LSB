@@ -17,10 +17,10 @@ def int_to_bin(val):
 def main():
     args = sys.argv[1:]
     if (len(args)<2):
-        print("Missing arguments\n\tpython codec.py <image> <message> <output>")
+        print("Missing arguments\n\tpython decoder.py <image> <output>")
         exit()
     if (len(args)>2):
-        print("Too many arguments\n\tpython codec.py <image> <message> <output>")
+        print("Too many arguments\n\tpython decoder.py <image> <output>")
         exit()
 
     print('''
