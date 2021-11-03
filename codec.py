@@ -6,6 +6,7 @@
 import sys
 from PIL import Image
 import numpy as np
+from time import sleep
 
 def split_binary(binary):
     return [binary[i:i+2] for i in range(0, len(binary), 2)]
@@ -31,11 +32,15 @@ def main():
         print("Error: \'"+args[0]+"\' does not exist")
         exit()
 
+    print("Loading of "+args[0]+" ...\n");sleep(0.5)
+
     try:
         message_file = open(args[1], "r")
     except:
         print("Error: \'"+args[1]+"\' does not exist")
         exit()
+
+    print("Reading of "+args[1]+" ...\n");sleep(0.5)
 
     try:
         output = open(args[2], "x+")
@@ -43,9 +48,13 @@ def main():
         print("Error: \'"+args[2]+"\' already exist")
         exit()
 
+    print("Creating of "+args[2]+" ...\n");sleep(0.5)
 
     image = image.convert('RGBA')
     pixels = image.load()
+
+    out = Image.new('RGBA', image.size)
+    out_pixels = out.load()
 
     message = message_file.readline()
     curr_char = 0
@@ -57,7 +66,6 @@ def main():
             g = g & 252
             b = b & 252
             a = a & 252
-
             if (curr_char < length_mess):
                 binary = bin(ord(message[curr_char]))[2:]
                 while (len(binary)<8):
@@ -67,9 +75,13 @@ def main():
                 g+=int(split[1],2)
                 b+=int(split[2],2)
                 a+=int(split[3],2)
-                #print(message[curr_char],ord(message[curr_char]),binary, split)
                 curr_char+=1
-            print("RED: ",r,"\tGREEN: ",g,"\tBLUE: ",b, "\tALPHA: ",a)
+            out_pixels[x, y] = (r, g, b, a)
+    out.save(args[2])
+
+    image.close()
+    message_file.close()
+    output.close()
 
 
 if __name__ == '__main__' :
