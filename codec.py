@@ -45,7 +45,11 @@ def main():
 
     print("Reading of "+args[1]+" ...\n");sleep(0.5)
 
-    message = message_file.readline()
+    message_lines = message_file.readlines()
+    message = ""
+    for i in message_lines:
+        message+=i
+    print(message)
 
     if (len(message)>image.size[0]*image.size[1]):
         print("Error: Message too long for the size of the image")
